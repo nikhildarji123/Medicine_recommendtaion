@@ -64,16 +64,13 @@ def predict():
         predicted_disease = get_predicted_value(user_symptoms)
 
         desc, pre, med, die, wrkout = helper(predicted_disease)
-
         my_pre=[]
         for i in pre[0]:
             my_pre.append(i)
-        med =[]
-        for i in pre[0]:
-            med.append(i)
-        die=[]
-        for i in pre[0]:
-            die.append(i)
+        
+        med = [' '.join(''.join(d for d in med[0]).split())]
+        die = [' '.join(''.join(d for d in die[0]).split())]
+
 
         return render_template('index.html',predicted_disease=predicted_disease, dis_dec=desc, dis_pre=my_pre, dis_med=med,dis_diet=die,dis_wrkout=wrkout)
 
