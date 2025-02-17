@@ -68,8 +68,8 @@ def predict():
         for i in pre[0]:
             my_pre.append(i)
         
-        med = [' '.join(''.join(d for d in med[0]).split())]
-        die = [' '.join(''.join(d for d in die[0]).split())]
+        med = [d.strip().strip("'") for d in med[0].split(',')]
+        die = [d.strip().strip("'") for d in die[0].split(',')]
 
 
         return render_template('index.html',predicted_disease=predicted_disease, dis_dec=desc, dis_pre=my_pre, dis_med=med,dis_diet=die,dis_wrkout=wrkout)

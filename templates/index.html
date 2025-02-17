@@ -74,44 +74,43 @@
     }
   </style>
   <body>
-
-<!--  this is navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-      <div class="logo">
-          <img class="myimg" src="{{url_for('static',filename='img.png')}}" alt="">
+    <!--  this is navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <div class="logo">
+              <img class="myimg" src="{{url_for('static',filename='img.png')}}" alt="">
+          </div>
+        <a class="navbar-brand" href="#">Health Center</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/index">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/developer">Developer</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+          
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
       </div>
-    <a class="navbar-brand" href="#">Health Center</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/index">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="/developer">Developer</a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="/blog">Blog</a>
-        </li>
-
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
+    </nav>
+    
 
 
     <h1 class="text-center">Health Care Center</h1>
@@ -152,8 +151,8 @@
                     <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" style="background-color: #modal-body-color;"> <!-- Set modal body background color inline -->
-                    <p>{{ predicted_disease }}</p>
+                <div class="modal-body" style="font-size: 1.3em; padding: 25px; overflow-y: auto; max-height: 60vh;"> <!-- Set modal body background color inline -->
+                    <p style="padding-left: 20px;">{{ predicted_disease }}</p>
                 </div>
             </div>
         </div>
@@ -166,8 +165,8 @@
                     <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p>{{ dis_dec }}</p>
+                <div class="modal-body" style="font-size: 1.3em; padding: 25px; overflow-y: auto; max-height: 60vh;">
+                    <p style="padding-left: 20px;">{{ dis_dec }}</p>
                 </div>
             </div>
         </div>
@@ -181,10 +180,11 @@
                     <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <ul>
+                <div class="modal-body" style="font-size: 1.3em; padding: 25px; overflow-y: auto; max-height: 60vh;">
+                    <ul style="padding-left: 20px;">
                         {% for i in dis_pre %}
-                            <li>{{ i }}</li>
+                            <li style="background: #f7f7fa; padding: 24px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); color: #333;">
+                              {{ i }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -199,10 +199,11 @@
                     <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <ul>
+                <div class="modal-body" style="font-size: 1.3em; padding: 25px; overflow-y: auto; max-height: 60vh;">
+                    <ul style="padding-left: 20px;">
                         {% for i in dis_med %}
-                            <li>{{ i }}</li>
+                            <li style="background: #f7f7fa; padding: 24px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); color: #333;">
+                              {{ i.strip("[]'") }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -217,10 +218,11 @@
                     <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <ul>
+                <div class="modal-body" style="font-size: 1.3em; padding: 25px; overflow-y: auto; max-height: 60vh;">
+                    <ul style="padding-left: 20px;">
                         {% for i in dis_wrkout %}
-                            <li>{{ i }}</li>
+                            <li style="background: #f7f7fa; padding: 24px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); color: #333;">
+                              {{ i }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -235,10 +237,11 @@
                     <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <ul>
+                <div class="modal-body" style="font-size: 1.3em; padding: 25px; overflow-y: auto; max-height: 60vh;">
+                    <ul style="padding-left: 20px;">
                         {% for i in dis_diet %}
-                            <li>{{ i }}</li>
+                            <li style="background: #f7f7fa; padding: 24px; margin-bottom: 20px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); color: #333;">
+                              {{ i.strip("[]'") }}</li>
                         {% endfor %}
                     </ul>
                 </div>
